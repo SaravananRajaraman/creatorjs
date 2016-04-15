@@ -19,6 +19,7 @@ console.log(new Date());
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var words = require('./routes/words');
+var note3110 = require('./routes/note3110');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,6 +68,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/note3110',note3110);
 app.use('/words', words);
 
 //app.all(/^\/demo/, function(req, res) { res.redirect('/demo/'); });
