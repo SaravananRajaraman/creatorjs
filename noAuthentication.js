@@ -1,19 +1,19 @@
-/**
- * Created by sarav_000 on 9/8/15.
- */
-
-
 var noAuthentication = [
     "GET/",
     "GET/signIn",
     "POST/users/signUp",
+    "GET/users/verifyEmail",    
+    "POST/users/resendVerifyEmail",    
     "POST/users/signIn",
-    "POST/users/verifyToken",
+    "GET/users/verifyToken",
     "POST/users/restPwdToken",
     "POST/users/verifyRestPwdToken",
-    "POST/users/restPwd",
-    "POST/users/signOut"
-
+    "POST/users/resetPwd",
+    "POST/users/signOut",
+    
+    "GET/notes/readNote",
+    // "POST/notes/saveNote",
+    "GET/note/",
 ];
 
 module.exports = noAuthentication;
