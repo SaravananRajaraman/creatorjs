@@ -7,11 +7,29 @@
 		           <div id="noNote" style="display:none"> No note found </div>		           
 		           <!--<div class="lines"></div>-->
                 <ul id="noteList">
-                  <li class="noteListItemClone" style="display:none"> <a href="javascript:;"> </a> </li>                  
+                  <li class="noteListItemClone" style="display:none"> 
+                  	<a class="editLink" href="javascript:;"> </a> 
+                  	<div class="noteCtrl pull-right"> 
+                  		<!--<i class="fa fa-pencil"/> -->
+                  		<i class="fa fa-trash-o deleteNote"/> 
+                  		<a class="readLink"> <i class="fa fa-book"/></a> 
+                		</div>
+                  	<div class="noteInfo">
+                  		 <div>
+                  		 	Create On:<span class="createdDate">21/4/2016</span>
+                  		 </div>
+                  		 <!--<div>
+                  		 	<i class="fa fa-heart-o"></i><span class="likes">2</span>
+                  		 </div>-->
+                  	</div>
+                  </li>                  
                 </ul>
 		        </div>
 		        <div class="col-md-2">
-		            <button type="button" class="btn btn-info btn-lg"  data-toggle="modal" data-target="#createNoteModal">New Note</button>
+		            <button type="button" class="btn btn-info btn-lg"  data-toggle="modal" data-target="#createNoteModal">
+		            <i class="fa fa-file-o"/> 
+		            New Note
+		            </button>
 		        </div>
 		    </div>
 		</div>

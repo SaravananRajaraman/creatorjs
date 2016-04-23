@@ -72,6 +72,10 @@ require(['Router'],function( Router ){
                 app.local + 'signUp.json',
                 app.api + 'users/signUp'
             ],
+            signOut: [
+                app.local + 'signUp.json',
+                app.api + 'users/signOut'
+            ],
             forgetPwd : [
                 app.local + 'signUp.json',
                 app.api + 'users/restPwdToken'
@@ -98,7 +102,16 @@ require(['Router'],function( Router ){
                 app.local + 'signUp.json',
                 app.api + 'notes/createNote'
             ],
+            deleteNote:[
+                app.local + 'signUp.json',
+                app.api + 'notes/deleteNote'
+            ],
             
+            
+            readNote:[
+                app.local + 'signUp.json',
+                app.api + 'notes/readNote'
+            ],
             getNote:[
                 app.local + 'signUp.json',
                 app.api + 'notes/getNote'
@@ -107,11 +120,23 @@ require(['Router'],function( Router ){
                 app.local + 'signUp.json',
                 app.api + 'notes/saveNote'
             ],
+            publishNote:[
+                app.local + 'signUp.json',
+                app.api + 'notes/publishNote'
+            ],
+            unPublishNote:[
+                app.local + 'signUp.json',
+                app.api + 'notes/unPublishNote'
+            ],
+            updateTitle:[
+                app.local + 'signUp.json',
+                app.api + 'notes/changeNoteTitle'
+            ],
+            
         };
-        if( app.currentState == 'resetpassword' ){
+        if( app.currentState == 'resetPwd' ){
             mainInit();
-        }
-        else if( app.token ){
+        }else if(app.token){
             $.ajax({
                 url: app.endPoints.verifyAuthorization[app.server],
                 type: "GET",
@@ -124,6 +149,10 @@ require(['Router'],function( Router ){
                         //setting profile photos     
                         cookie.deleteCookies();
                         cookie.setCookie('token', app.token, 1);
+                        /*var tempStr = (location.hash);
+                        if(tempStr == "#signIn" || tempStr == "#signUp" || tempStr == "#forgetPwd"){
+                            location.href = '#singIn';    
+                        }   */              
                         mainInit();
                     }else{
                         console.log(data.message);
@@ -146,4 +175,3 @@ require(['Router'],function( Router ){
             Backbone.history.start();             
         }
 });
-

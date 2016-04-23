@@ -1,5 +1,27 @@
 <div class="container-fluid">
-	<div class="row">
-	    	Saravanan
+	<div class="row">		
+		<div class="col-md-12">
+		 	<% if(window.app.currentState == 'note' || window.app.currentState == 'noteboard' ||  window.app.currentState == 'noteread' ) { %>
+				<% if(app.token) { %>				
+					<div class="col-md-2 col-md-offset-1">				
+						<a href="#home">Home</a> | 				
+						<a href="#noteboard">Noteboard</a>
+					</div>			
+			    	<div class="col-md-1 col-md-offset-6"><a href="#signOut">SignOut</a></div>		    
+		    	<% }else{ %>
+		    		<div class="col-md-1 col-md-offset-11"><a href="#signIn">Sign In</a></div>		    
+		    	<% } %>
+		    <% } %>
+		    <% if(window.app.currentState == 'home') { %>				
+		    	<% if(app.token) { %>				
+		    		<div class="col-md-1 col-md-offset-1">											
+						<a href="#noteboard">Noteboard</a>
+					</div>			
+					<div class="col-md-1 col-md-offset-8"><a href="#signOut">Sign out</a></div>		    						
+				<% }else{ %>
+		    		<div class="col-md-1 col-md-offset-11"><a href="#signIn">Sign In</a></div>		    
+		    	<% } %>
+		    <% } %>
+	    </div>
 	</div>
 </div>

@@ -30,6 +30,7 @@ define([
           success: function (res) {            
             if(!res.error){
               cookie.setCookie('token', res.token, 1);
+              app.token = res.token;
               location.href = '#noteboard';              
             }else{
               $("#inputPassword3").val("");

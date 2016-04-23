@@ -53,6 +53,16 @@ body{
   box-shadow: 5px 5px 10px #888888;
   color:#fff;
 }
+
+#mainHeader a{
+   /*text-decoration: none !important;*/
+   color:#ddd;
+}
+
+#mainHeader .row{
+  margin-top: 10px;  
+}
+
 #mainContent{
   margin-top: 20px;
   overflow: auto;
@@ -62,11 +72,53 @@ body{
   bottom: 0px;
   width: 100%;
   height: 40px;
+  color:#ddd;
 }
+#mainFooter div{
+  margin-top: 10px;  
+}
+
 
 .menu-item{
   display: block;
   text-decoration: none;
   text-transform: none;
 }
+
+.noteListItem{
+  width: 150px;
+  height: 40px;
+  outline: 1px solid #888;   
+  margin: 20px;
+  list-style-type: none;
+  padding: 10px;
+  float: left;
+}
+
+.noteCtrl{
+  
+}
+
+#optionContent{
+  border-right: 1px solid #aaa;
+  }
+
+.noteInfo{
+  font-size: 11px;
+}
+
+.deleteNote{
+  cursor: pointer;  
+}
+
+#noteName #notetitle{
+  font-size: 24px;  
+  border:none;
+  /*padding: 2px;*/
+  margin-top: 2px;
+  width: 100%;
+}  
+#noteName #notetitle:focus, #notetitle:hover{  
+  outline:1px solid #bbb;
+}  
 

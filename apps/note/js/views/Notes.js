@@ -2,16 +2,19 @@
 define([
   'text!templates/notes.html'
   ], function(notesTemplate){
-    var self;
+    var self,isProgress;
   var notesView = Backbone.View.extend({
     el: $('#mainContent'),
     events: {
-      'click #saveNote':'saveNote' 
+      'click #saveNote':'saveNote',
+      'click .shareNote':"shareNote",
+      'focusout #noteName input':"updateTitle"
     },
     initialize: function() {
         self = this;               
         $("#mainContent").empty().append(_.template(notesTemplate));   
         app.noteId = this.model.noteId;
+        app.displayPage(this);
         self.cssIntialize();
         $(window).resize(function(){
             self.cssIntialize();
@@ -33,12 +36,26 @@ define([
             location.href = "#noteboard";  
           }else{
             $("#editor").html(res.noteData.note);
+            var noteTitle = res.noteData.noteTitle;
+            $("#notetitle").val(noteTitle);
+            $(".readLink").attr("href","#noteread/"+app.noteId);
+            app.noteTitle = noteTitle;            
+            self.toggleShareNote(res.noteData.type);
           }          
         },
         error: function (err) {
           alert("error"); 
         }
       });
+    },
+    toggleShareNote:function(type){
+      if(type){
+        $(".makePrivate").show();
+        $(".makePublic").hide();
+      }else{
+        $(".makePrivate").hide();
+        $(".makePublic").show();
+      }
     },
     saveNote:function(){
       var html = $("#editor").html();
@@ -65,6 +82,69 @@ define([
           console.log(err);
         }
       });
+    },
+    shareNote:function(e){
+      if(isProgress)return;
+      isProgress = true;
+      var shareType = $(e.currentTarget).attr("data-shareType");
+      var url = ""
+      
+      if(shareType == "public"){
+        self.toggleShareNote(true);  
+        url = app.endPoints.unPublishNote[app.server];
+      }else{
+        self.toggleShareNote(false);
+        url = app.endPoints.publishNote[app.server];
+      }
+      $.ajax({
+        url:url,                 
+        type: "post",
+        data:{            
+            noteId: app.noteId            
+        },
+        headers: {'Authorization': app.token},
+        dataType: 'json',
+        // global: false,
+        success: function (res) {
+          isProgress = false;
+          if(res.error){
+            alert("unable to save note");
+          }else{
+            console.log("note save successfully");
+          }  
+        },
+        error: function (err) {
+          isProgress = false;
+          alert("error");
+          console.log(err);
+        }
+      });      
+    },
+    updateTitle:function(e){
+      var noteTitle = $(e.currentTarget).val();
+      if(noteTitle == app.noteTitle) return;
+      $.ajax({
+        url: app.endPoints.updateTitle[app.server],                
+        type: "post",
+        data:{            
+            noteId: app.noteId,
+            noteTitle: noteTitle            
+        },
+        headers: {'Authorization': app.token},
+        dataType: 'json',
+        // global: false,
+        success: function (res) {
+          if(res.error){
+            alert("unable to save note");
+          }else{
+            console.log("note save successfully");
+          }  
+        },
+        error: function (err) {
+          alert("error");
+          console.log(err);
+        }
+      }); 
     },
     noteSetup:function(){
           function initToolbarBootstrapBindings() {

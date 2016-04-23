@@ -45,7 +45,7 @@ router.post('/createNote',function(req, res, next) {
 });
 
 router.post('/changeNoteTitle',function(req, res, next) {    
-    var noteId = req.body.noteId,noteTitle = req.body.noteTitle;
+    var noteId = req.body.noteId,noteTitle = req.body.noteTitle || "untitle";
     Note.findOneAndUpdate(
         {noteId: noteId},
         {$set:{noteTitle:noteTitle}},
@@ -80,6 +80,18 @@ router.post('/saveNote',function(req, res, next) {
             res.status(500).send({"message":"unable to save the note","error":true,"devInfo":"error on note save","devErr":err});
         }else{
             res.send({"error":false,"message":"Note saved successfully"});
+        }
+    });
+});
+
+router.delete('/deleteNote',function(req, res, next){
+    Note.findOneAndRemove({noteId: req.body.noteId}, function(err,doc){
+        if(err){
+            console.log(err);
+            res.status(500).send({"message":"fail to delete note","error":true,"devInfo":"error on verifyEmail findOneAndRemove","devErr":err});
+        }else{
+            console.log(doc);
+            res.send({"message":"Note removed successfully","error":false});                        
         }
     });
 });
@@ -166,7 +178,7 @@ router.get('/getNotesList', function(req, res, next) {
 
 router.get('/readNote', function(req, res, next) {
     var noteId = req.query.noteId;
-    console.log(noteId);
+    console.log(noteId,req.userId);
     Note.find()
     .where('noteId').equals(noteId)    
     .exec(function (err, doc){
@@ -177,10 +189,10 @@ router.get('/readNote', function(req, res, next) {
                 res.send({"error":true,"message":"note is not found"});
             }else{      
                 console.log(doc[0]);
-                if(doc[0].type == "true"){
-                    res.send({ "error": false,"message": "note found", "note": doc[0].note, "noteId": doc[0].noteId });
+                if(doc[0].type == "true" || doc[0].userId == req.query.userId){
+                    res.send({ "error": false,"message": "note found", "noteData": doc[0] });
                 }else{
-                    res.send({"error":true,"message":"note is not published"});    
+                    res.send({"error":true,"message":"Unauthorized access"});    
                 }
                 
             }

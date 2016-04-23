@@ -7,9 +7,11 @@ define([
       el: $('#mainContent'),
     events: {
         // 'click #newNote':'createNote',
-        'submit #createNoteForm':'createNote'
+        'submit #createNoteForm':'createNote',
+        'click .deleteNote':'deleteNote'
     },
-    initialize: function() {
+    //http://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=warning-alert-message
+    initialize: function(){
         self = this;               
         $("#mainContent").empty().append(_.template(noteboardTemplate));                
         app.displayPage(this);
@@ -49,7 +51,9 @@ define([
             $("#noteList").show();
             for(var x =0; x<data.length; x++){
                 var noteListItemClone = $(".noteListItemClone").clone().addClass("noteListItem").removeClass("noteListItemClone").show();    
-                noteListItemClone.find("a").text(data[x].noteTitle).attr("href","#note/"+data[x].noteId);
+                noteListItemClone.find(".editLink").text(data[x].noteTitle).attr("href","#note/"+data[x].noteId)
+                    .end().find(".readLink").attr("href","#noteread/"+data[x].noteId);
+                noteListItemClone.attr("data-noteId",data[x].noteId);
                 $("#noteList").append(noteListItemClone);                
             }
         }
@@ -77,6 +81,32 @@ define([
             console.log(err);
           }
         });
+    },
+    deleteNote:function(e){        
+        var confirm = window.confirm("Are you sure want to delete ?");
+        if(confirm){
+            var note = $(e.currentTarget).parents(".noteListItem");
+            $.ajax({
+              url: app.endPoints.deleteNote[app.server],                
+              type: "delete",
+              headers: {'Authorization': app.token},
+              data:{                  
+                  noteId:note.attr("data-noteId")
+              },        
+              dataType: 'json',          
+              success: function (res) {                
+                if(!res.error){
+                    note.remove();
+                }else{              
+                    alert(res.message);                  
+                }            
+              },
+              error: function (err) {
+                alert("Error on server");
+                console.log(err);
+              }
+            });    
+        }
     },
     cssIntialize:function(){
         $('#mainContent').css({ height: ($(window).height()-100), overflow : 'auto'});

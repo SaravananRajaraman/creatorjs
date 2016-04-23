@@ -367,6 +367,8 @@ router.post('/resetPwd',function(req, res, next) {
         });
 });
 
+// sendMail("reasd","rsaravanan.btech@gmail.com",1234);
+
 function sendMail(type,receivers,link){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -381,14 +383,14 @@ function sendMail(type,receivers,link){
             from: config.mail.email,
             to: receivers,
             subject:'Verify email',
-            html : link
+            html : "<h1>Hello Noter</h1><br><h3>Welcome to Note, Please verify the below link to get stated</h3><a href='"+config.appLocation+"users/verifyEmail?token="+link+"'>Link to verify email</a>"
         };
     }else{
         mailObj = {
             from: config.mail.email,
             to: receivers,
             subject:'Reset password link',
-            html : link
+            html : "<h1>Hello Noter</h1><br><h3>Please click the below link to reset your password</h3><a href='"+config.appLocation+"note/#resetPwd/"+link+"'>Link to reset password</a>"
         };
     }
     transporter.sendMail(mailObj, function(error, info){
