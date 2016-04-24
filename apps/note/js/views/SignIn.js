@@ -34,11 +34,12 @@ define([
               location.href = '#noteboard';              
             }else{
               $("#inputPassword3").val("");
-              alert("Invalid email or password");                  
+              radio('global:headerAlert').broadcast("error","Invalid email or password");                  
             }            
           },
           error: function (err) {
-            alert("Error on server");
+            // alert("Error on server");
+            radio('global:headerAlert').broadcast("warning","something went wrong, Please try again later");                  
             console.log(err);
           }
       });

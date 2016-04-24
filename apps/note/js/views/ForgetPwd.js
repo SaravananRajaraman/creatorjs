@@ -29,7 +29,11 @@ define([
           dataType: 'json',
           // global: false,
           success: function (res) {
-            console.log(res)
+            if(!res.error){              
+              radio('global:headerAlert').broadcast("success",'A link to reset the password has been sent to <strong>' + $('#inputEmail3').val() + '</strong> Please check your inbox to continue.');
+            }else{
+              
+            }      
           },
           error: function (err) {
             console.log(err);

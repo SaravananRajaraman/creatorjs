@@ -19,6 +19,7 @@ define([
         });
         // self.noteSetup();
         self.getNote();
+        $(".tooltip").remove();//fixes
     },   
     getNote:function(){      
       $.ajax({

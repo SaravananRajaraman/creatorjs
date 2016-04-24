@@ -72,13 +72,16 @@ define([
         // global: false,
         success: function (res) {
           if(res.error){
-            alert("unable to save note");
+            // alert("unable to save note");
+            radio('global:headerAlert').broadcast("error",res.message);
           }else{
+            radio('global:headerAlert').broadcast("success","Note saved successfully");
             console.log("note save successfully");
           }  
         },
         error: function (err) {
-          alert("error");
+          // alert("error");
+          radio('global:headerAlert').broadcast("error","Something went wrong");
           console.log(err);
         }
       });
@@ -108,14 +111,17 @@ define([
         success: function (res) {
           isProgress = false;
           if(res.error){
-            alert("unable to save note");
+            // alert("unable to save note");
+            radio('global:headerAlert').broadcast("error",res.message);
           }else{
+            radio('global:headerAlert').broadcast("success","Successfully share setting updated");
             console.log("note save successfully");
           }  
         },
         error: function (err) {
           isProgress = false;
-          alert("error");
+          // alert("error");
+          radio('global:headerAlert').broadcast("error","something went wrong");
           console.log(err);
         }
       });      
@@ -135,13 +141,14 @@ define([
         // global: false,
         success: function (res) {
           if(res.error){
-            alert("unable to save note");
+            radio('global:headerAlert').broadcast("error",res.message);
           }else{
+            radio('global:headerAlert').broadcast("success","Title saved successfully");
             console.log("note save successfully");
           }  
         },
         error: function (err) {
-          alert("error");
+          radio('global:headerAlert').broadcast("error","Something went wrong");
           console.log(err);
         }
       }); 

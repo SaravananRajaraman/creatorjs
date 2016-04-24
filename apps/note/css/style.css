@@ -62,6 +62,15 @@ body{
 #mainHeader .row{
   margin-top: 10px;  
 }
+.headerAlert a{
+  color: #000 !important;
+}  
+.headerAlert{
+  margin-top: -10px !important;
+  margin-bottom:0px;
+  padding: 10px;  
+  display: none;
+}
 
 #mainContent{
   margin-top: 20px;

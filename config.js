@@ -21,8 +21,8 @@ var local = {
         "email":"mail.creatorjs@gmail.com",
         "password":"Cre@t0rjs"
     },
-    "appLocation":"https://heroku-saravananrajaraman.c9.io/"
-    // "appLocation":"http://creatorjs.herokuapp.com/"
+    // "appLocation":"https://heroku-saravananrajaraman.c9.io/"
+    "appLocation":"http://creatorjs.herokuapp.com/"
 };
 
 module.exports = local;

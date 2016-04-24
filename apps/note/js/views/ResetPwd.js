@@ -6,9 +6,9 @@ define([
   var resetPwdView = Backbone.View.extend({
     el: $('#mainContent'),
     events: {
-       "submit #resetPwdForm" : "resetPwd"     
+       "click #resetPwdSubmit" : "resetPwd"     
     },
-    initialize: function() {
+    initialize: function(){
       //debugger;
         self = this;        
         if(this.model.token){
@@ -35,7 +35,9 @@ define([
           dataType: 'json',
           // global: false,
           success: function (res) {
-            console.log(res)
+            if(res.error){
+              location.href = "#signIn";  
+            }
           },
           error: function (err) {
             console.log(err);
@@ -54,7 +56,15 @@ define([
           dataType: 'json',
           // global: false,
           success: function (res) {
-            console.log(res);
+            if(!res.error){
+              radio('global:headerAlert').broadcast("success",'Password reset successfully');
+              $("#pwd").val('');
+              setTimeout(function(){
+                location.href = "#signIn"
+              },2000);              
+            }else{
+              radio('global:headerAlert').broadcast("error",res.error);
+            }            
           },
           error: function (err) {
             console.log(err);

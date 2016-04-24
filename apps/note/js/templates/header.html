@@ -7,20 +7,41 @@
 						<a href="#home">Home</a> | 				
 						<a href="#noteboard">Noteboard</a>
 					</div>			
-			    	<div class="col-md-1 col-md-offset-6"><a href="#signOut">SignOut</a></div>		    
+					<div class="col-md-5">
+						<div class="alert headerAlert">
+					        <a href="javascript:;" class="headerAlertClose close" onClick="$('.headerAlert').finish().slideUp()">&times;</a>
+					        <!--<strong>Warning!</strong>-->
+					        <span> There was a problem with your network connection. </span>
+					    </div>
+					</div>
+			    	<div class="col-md-2 col-md-offset-2"><a href="#signOut">Sign Out</a></div>		    
 		    	<% }else{ %>
 		    		<div class="col-md-1 col-md-offset-11"><a href="#signIn">Sign In</a></div>		    
 		    	<% } %>
-		    <% } %>
-		    <% if(window.app.currentState == 'home') { %>				
+		    <% } else if(window.app.currentState == 'home') { %>				
 		    	<% if(app.token) { %>				
 		    		<div class="col-md-1 col-md-offset-1">											
 						<a href="#noteboard">Noteboard</a>
 					</div>			
-					<div class="col-md-1 col-md-offset-8"><a href="#signOut">Sign out</a></div>		    						
+					<div class="col-md-6">
+						<div class="alert headerAlert">
+					        <a href="javascript:;" class="headerAlertClose close" onClick="$('.headerAlert').finish().slideUp()">&times;</a>
+					        <!--<strong>Warning!</strong>-->
+					        <span> There was a problem with your network connection. </span>
+					    </div>
+					</div>
+					<div class="col-md-1 col-md-offset-2"><a href="#signOut">Sign out</a></div>		    						
 				<% }else{ %>
 		    		<div class="col-md-1 col-md-offset-11"><a href="#signIn">Sign In</a></div>		    
 		    	<% } %>
+		    <% } else { %>
+		    		<div class="col-md-offset-3 col-md-6">
+						<div class="alert headerAlert">
+					        <a href="javascript:;" class="headerAlertClose close" onClick="$('.headerAlert').finish().slideUp()">&times;</a>
+					        <!--<strong>Warning!</strong>-->
+					        <span> There was a problem with your network connection. </span>
+					    </div>
+					</div>
 		    <% } %>
 	    </div>
 	</div>

@@ -175,7 +175,8 @@ router.get('/verifyEmail',function(req, res, next) {
                                     }else{
                                         // TODO: Need to do redirection to login page
                                         //ref : http://expressjs.com/en/4x/api.html#res.location
-                                        res.send({"message":"Email verify successfully","error":false});            
+                                        // res.send({"message":"Email verify successfully","error":false});            
+                                        res.redirect(config.appLocation+"note/#signIn");
                                         // res.location('../');
                                     }
                                 });
@@ -367,7 +368,7 @@ router.post('/resetPwd',function(req, res, next) {
         });
 });
 
-// sendMail("reasd","rsaravanan.btech@gmail.com",1234);
+// sendMail("signUp","rsaravanan.btech@gmail.com",1234);
 
 function sendMail(type,receivers,link){
     var transporter = nodemailer.createTransport({

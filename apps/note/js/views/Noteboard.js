@@ -33,7 +33,8 @@ define([
                 // console.log(res);
                 self.renderNotesList(res.note);
             }else{              
-              alert(res.message);                  
+            //   alert(res.message);                  
+                radio('global:headerAlert').broadcast("error",res.message);
             }            
           },
           error: function (err) {
@@ -97,12 +98,15 @@ define([
               success: function (res) {                
                 if(!res.error){
                     note.remove();
+                    radio('global:headerAlert').broadcast("success","Successfully note deleted");
                 }else{              
-                    alert(res.message);                  
+                    // alert(res.message);
+                    radio('global:headerAlert').broadcast("error",res.message);
                 }            
               },
               error: function (err) {
-                alert("Error on server");
+                // alert("Error on server");
+                radio('global:headerAlert').broadcast("error","something went wrong");
                 console.log(err);
               }
             });    

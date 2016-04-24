@@ -31,10 +31,17 @@ define([
           dataType: 'json',
           // global: false,
           success: function (res) {
-            console.log(res);
+            // console.log(res);
+            if(!res.error){              
+              radio('global:headerAlert').broadcast("success",'An e-mail has been sent to <strong>' + res.email + '</strong> Complete the verification process from your inbox to continue.');
+              $(".signUpFileds").val('');              
+            }else{
+              
+            }      
           },
           error: function (err) {
             console.log(err);
+            radio('global:headerAlert').broadcast("warning","something went wrong, Please try again later");
           }
       });
     },
