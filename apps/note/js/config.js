@@ -6,4 +6,4 @@ var herokuConfig = {
     "serverApi" : "http://creatorjs.herokuapp.com/"    
 };
 
-window.config = c9Config;
+window.config = herokuConfig;
