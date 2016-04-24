@@ -6,7 +6,7 @@ define([
   var resetPwdView = Backbone.View.extend({
     el: $('#mainContent'),
     events: {
-       "click #resetPwdSubmit" : "resetPwd"     
+       "submit #forgetPwdForm" : "resetPwd"     
     },
     initialize: function(){
       //debugger;
@@ -44,7 +44,8 @@ define([
           }
       });      
     },
-    resetPwd:function(){
+    resetPwd:function(e){
+      e.preventDefault();
       $.ajax({
           url: app.endPoints.resetPwd[app.server],                
           type: "post",

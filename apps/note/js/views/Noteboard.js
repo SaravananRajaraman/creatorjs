@@ -59,7 +59,8 @@ define([
             }
         }
     },
-    createNote:function(){
+    createNote:function(e){
+        e.preventDefault();
         $('#createNoteModal').modal('hide');
         $.ajax({
           url: app.endPoints.createNote[app.server],                

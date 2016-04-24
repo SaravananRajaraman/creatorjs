@@ -18,7 +18,8 @@ define([
             self.cssIntialize();
         });
     },  
-    forgetPwd:function(){
+    forgetPwd:function(e){
+      e.preventDefault();
       $.ajax({
           url: app.endPoints.forgetPwd[app.server],                
           type: "post",

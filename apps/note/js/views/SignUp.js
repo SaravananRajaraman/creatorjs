@@ -18,7 +18,8 @@ define([
             self.cssIntialize();
         });
     },
-    signUp:function(){
+    signUp:function(e){
+      e.preventDefault();
       $.ajax({
           url: app.endPoints.signUp[app.server],                
           type: "post",
