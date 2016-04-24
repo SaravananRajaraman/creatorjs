@@ -3,7 +3,7 @@ var c9Config = {
 };
 
 var herokuConfig = {
-    "serverApi" : "http://creatorjs.herokuapp.com/"    
+    "serverApi" : "https://creatorjs.herokuapp.com/"    
 };
 
 window.config = herokuConfig;

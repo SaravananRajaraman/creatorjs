@@ -22,7 +22,7 @@ var local = {
         "password":"Cre@t0rjs"
     },
     // "appLocation":"https://heroku-saravananrajaraman.c9.io/"
-    "appLocation":"http://creatorjs.herokuapp.com/"
+    "appLocation":"https://creatorjs.herokuapp.com/"
 };
 
 module.exports = local;
