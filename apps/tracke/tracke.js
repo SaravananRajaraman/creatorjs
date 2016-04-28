@@ -11,7 +11,7 @@ window.TRACKE = {
                 case "server":
                     // endPoints = "https://node-dev.herokuapp.com/track";
                     // endPoints = "https://heroku-saravananrajaraman.c9.io/track";
-                    endPoints = "https://creatorjs.herokuapp.com/tracke";
+                    endPoints = "https://creatorjs.herokuapp.com/track";
                     break;
                 default :
                     endPoints = "http://localhost:3000/track";
