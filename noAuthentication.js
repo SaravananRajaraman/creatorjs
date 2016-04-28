@@ -14,7 +14,8 @@ var noAuthentication = [
     "GET/notes/readNote",
     // "POST/notes/saveNote",
     "GET/note/",
-    "DELETE/notes/deleteNote"
+    "DELETE/notes/deleteNote",    
+    
 ];
 
 module.exports = noAuthentication;

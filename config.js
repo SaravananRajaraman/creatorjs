@@ -9,7 +9,8 @@ var local = {
             "token":"tokens",
             "resetPwdToken":"resetPwdTokens",
             "verifyEmail":"verifyEmails",
-            "notes":"notes"
+            "notes":"notes",
+            "tracke":"tracks"
           }
     },
     "httpsConfig": {

@@ -37,6 +37,8 @@ console.log(new Date());
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var notes = require("./routes/notes");
+var track = require('./routes/tracke');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -68,7 +70,7 @@ app.use(function (req, res, next) {
     var Authorization = req.header('Authorization');
     var urlWildCard =  path.split('/');
     
-    if(urlWildCard[1] == "note"){
+    if(urlWildCard[1] == "note" || urlWildCard[1] == "tracke" || urlWildCard[1] == "track"){
         next();      
     }else if(noAuthentication.indexOf(uri) == -1){
         if(Authorization){
@@ -121,9 +123,11 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/notes',notes);
+app.use('/track',track);
 // app.use('/words', words);
 
 app.use('/note/',express.static(__dirname+'/apps/note'));
+app.use('/tracke/',express.static(__dirname+'/apps/tracke'));
 
 // error handlers
 // catch 404 and forward to error handler

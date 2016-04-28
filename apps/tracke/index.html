@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TRACKE</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="tracke.js"></script>
+    <!--<script src="tracke.min.js"></script>-->
+    <script>
+
+        function loadXMLDoc() {
+            var http = new XMLHttpRequest();
+            var url = "http://localhost:3000/track";
+            var params = param({ name: "saravanan"}); //JSON.stringify({ name: "saravanan"});
+            var type = "POST";
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("POST", "http://localhost:3000/track", true);
+            xmlhttp.setRequestHeader("Content-length", 1);
+            xmlhttp.setRequestHeader("Connection", "close");
+            xmlhttp.send(params);
+            //xmlhttp.send(JSON.stringify({name:"John Rambo", time:"2pm"}));
+            //xmlhttp.send();
+        }
+        function param(object) {
+            var encodedString = '';
+            for (var prop in object) {
+                if (object.hasOwnProperty(prop)) {
+                    if (encodedString.length > 0) {
+                        encodedString += '&';
+                    }
+                    encodedString += encodeURI(prop + '=' + object[prop]);
+                }
+            }
+            return encodedString;
+        }
+        $(function () {
+            $("#test").on('click', function () {
+                TRACKE.trackMe("test",{
+                    name:"saravanan",
+                    age:25
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+
+<h2>AJAX</h2>
+<!--<button type="button" onclick="loadXMLDoc()">Request data</button>-->
+<button id="test">Test</button>
+</body>
+</html>
