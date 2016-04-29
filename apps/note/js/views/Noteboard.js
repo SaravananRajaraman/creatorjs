@@ -90,7 +90,7 @@ define([
             var note = $(e.currentTarget).parents(".noteListItem");
             $.ajax({
               url: app.endPoints.deleteNote[app.server],                
-              type: "delete",
+              type: "post",
               headers: {'Authorization': app.token},
               data:{                  
                   noteId:note.attr("data-noteId")

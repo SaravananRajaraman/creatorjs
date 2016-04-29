@@ -84,7 +84,7 @@ router.post('/saveNote',function(req, res, next) {
     });
 });
 
-router.delete('/deleteNote',function(req, res, next){
+router.post('/deleteNote',function(req, res, next){
     Note.findOneAndRemove({noteId: req.body.noteId}, function(err,doc){
         if(err){
             console.log(err);
