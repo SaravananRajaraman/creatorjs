@@ -83,7 +83,7 @@ app.use(function (req, res, next) {
                 }else{
                     // console.log(doc);
                     if(doc.length == 0){                    
-                        res.send({error:true,"message":"token not found"});
+                        res.send({error:true,"message":"token not found","action":"signOut"});
                     }else{
                         if(doc[0].expire > new Date().getTime()){
                             Token.findOneAndUpdate(
@@ -102,7 +102,7 @@ app.use(function (req, res, next) {
                                     }
                                 });
                         }else{
-                            res.send({"message":"token expired","error":true});
+                            res.send({"message":"token expired","error":true,"action":"signOut"});
                         }
                     }
                 }

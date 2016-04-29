@@ -10,6 +10,23 @@ require(['Router'],function( Router ){
         var app = window.app = window.app || {};
         //reset page setup calls
         
+        $(document).ajaxComplete(function(event, xhr, options){      
+            console.info(event, xhr, options); 
+            if(app.endPoints.verifyAuthorization[app.server] !== options.url){
+                var data;
+                try{
+                    data = ($.parseJSON(xhr.responseText));
+                    if(data.error){
+                        if(data.action == "signOut"){
+                            location.href = "#singOut"
+                        }
+                    }
+                }catch(e){
+
+                }
+            }
+        });
+        
         window.cookie = { // refer in http://www.w3schools.com/js/js_cookies.asp
             getCookie: function(cname) {
                 var name = cname + "=";
