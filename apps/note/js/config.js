@@ -7,3 +7,4 @@ var herokuConfig = {
 };
 
 window.config = herokuConfig;
+// window.config = c9Config;

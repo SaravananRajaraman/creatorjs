@@ -64,12 +64,12 @@ app.all('/*', function(req, res, next) {
 
 app.use(function (req, res, next) {
     console.log('Time:', Date.now());    
+    
     var path = url.parse(req.url).pathname;
     var method = req.method;    
     var uri = method+path;     
     var Authorization = req.header('Authorization');
-    var urlWildCard =  path.split('/');
-    
+    var urlWildCard =  path.split('/');    
     if(urlWildCard[1] == "note" || urlWildCard[1] == "tracke" || urlWildCard[1] == "track"){
         next();      
     }else if(noAuthentication.indexOf(uri) == -1){

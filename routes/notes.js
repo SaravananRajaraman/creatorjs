@@ -11,7 +11,7 @@ var Note = require('../models/Note');
 //Todo: Use cross Domain in global
 router.all('/*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", 'Content-Type, X-Requested-With');
+    res.header("Access-Control-Allow-Headers", 'Content-Type, X-Requested-With','Authorization');
     next();
 });
 

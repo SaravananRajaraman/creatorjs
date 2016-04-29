@@ -12,9 +12,7 @@ var noAuthentication = [
     "POST/users/signOut",
     
     "GET/notes/readNote",
-    // "POST/notes/saveNote",
-    "GET/note/",
-    "DELETE/notes/deleteNote",    
+            
     
 ];
 
