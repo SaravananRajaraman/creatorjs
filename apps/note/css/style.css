@@ -94,14 +94,14 @@ body{
   text-transform: none;
 }
 
-.noteListItem{
-  width: 150px;
-  height: 40px;
-  outline: 1px solid #888;   
-  margin: 20px;
-  list-style-type: none;
-  padding: 10px;
-  float: left;
+.noteListItem {
+    width: 150px;
+    /* height: 40px; */
+    outline: 1px solid #888;
+    margin: 5px;
+    list-style-type: none;
+    padding: 5px;
+    float: left;
 }
 
 .noteCtrl{

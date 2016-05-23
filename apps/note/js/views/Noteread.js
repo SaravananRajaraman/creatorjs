@@ -49,6 +49,7 @@ define([
     },    
     cssIntialize:function(){
         $('#mainContent').css({ height: ($(window).height()-100), overflow : 'auto'});
+        $("#editor").height($(window).height()-170);
     },
     onClose:function(){        
         self.undelegateEvents();
