@@ -88,7 +88,7 @@ app.use(function (req, res, next) {
                         if(doc[0].expire > new Date().getTime()){
                             Token.findOneAndUpdate(
                                 { token: Authorization },
-                                { $set: { expire : new Date(new Date().getTime()+(1000*60*60*24*365)) }},//new Date().getTime()+(1000*60*60*0.5) }},
+                                { $set: { expire : new Date().getTime()+(1000*60*60*0.5) }},
                                 { upsert: false },
                                 function(err, token) {
                                     if(err){
