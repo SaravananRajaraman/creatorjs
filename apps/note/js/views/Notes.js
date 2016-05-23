@@ -195,7 +195,7 @@ define([
     },
     cssIntialize:function(){
         $('#mainContent').css({ height: ($(window).height()-100), overflow : 'auto'});
-        $("#editor").height($(window).height()-170);
+        $("#editor").height($(window).height()-270);
     },
     onClose:function(){        
         self.undelegateEvents();
